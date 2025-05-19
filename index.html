@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interfaz de Bombeo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0a1a2f;
+      color: #ffffff;
+    }
+    .header {
+      background: #144a86;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section {
+      padding: 10px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .card {
+      background: #1f3b5c;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1 1 200px;
+    }
+    .title {
+      font-weight: bold;
+      color: #80c4ff;
+    }
+    .value {
+      font-size: 1.5em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      width: 100%;
+    }
+    .voltaje-bar {
+      background: #444;
+      height: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+    .voltaje-bar div {
+      height: 100%;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Rebombeo San Ignacio</h2>
+    <div>
+      <strong>Estado:</strong> Online | <strong>Modo:</strong> Automático | <strong>Submonitor:</strong> Run
+    </div>
+  </div>  <div class="section grid">
+    <div class="card"><div class="title">Falla</div><div class="value">Ninguna</div></div>
+    <div class="card"><div class="title">Alarma 1</div><div class="value">Ninguna</div></div>
+    <div class="card"><div class="title">Alarma 2</div><div class="value">Ninguna</div></div>
+    <div class="card"><div class="title">Alarma 3</div><div class="value">Sin alarmas</div></div>
+    <div class="card"><div class="title">Nivel</div><div class="value">- m</div></div>
+    <div class="card"><div class="title">Caudal</div><div class="value">- m3/h</div></div>
+    <div class="card"><div class="title">Presión</div><div class="value">- mca</div></div>
+    <div class="card"><div class="title">Potencia</div><div class="value">20 HP</div></div>
+  </div>  <div class="section">
+    <div class="card" style="flex: 2">
+      <div class="title">Voltajes</div>
+      <div>Voltaje R-S: 378.5V<div class="voltaje-bar"><div style="width: 95%; background: #00bfff;"></div></div></div>
+      <div>Voltaje S-T: 377.6V<div class="voltaje-bar"><div style="width: 94%; background: #00bfff;"></div></div></div>
+      <div>Voltaje T-R: 377.0V<div class="voltaje-bar"><div style="width: 93%; background: #00bfff;"></div></div></div>
+      <div>Voltaje L1: 218.1V<div class="voltaje-bar"><div style="width: 54%; background: orange;"></div></div></div>
+    </div>
+    <div class="card" style="flex: 2">
+      <div class="title">Corrientes</div>
+      <div>Corriente A: 28.9A</div>
+      <div>Corriente B: 29.0A</div>
+      <div>Corriente C: 28.7A</div>
+      <div>Promedio: 28.9A</div>
+      <div>Desbalance: 0.5%</div>
+      <div>A Tierra: 0.00A</div>
+    </div>
+  </div>
+</body>
+</html>
