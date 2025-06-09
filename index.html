@@ -1,31 +1,100 @@
-forma estable.</li>
-      </ul>
-    </section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Eólico Interactivo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    <section class="simulador">
-      <h2>Simulador Interactivo</h2>
-      <label for="viento"><strong>Velocidad del viento:</strong> <span id="velocidadViento">10</span> m/s</label><br/>
-      <input type="range" id="viento" min="1" max="25" value="10" oninput="actualizarSimulador()" />
+    .simulador {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
 
-      <div class="turbina" id="turbina">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="8" fill="#0077b6"/>
-          <line x1="50" y1="10" x2="50" y2="50" stroke="#0096c7" stroke-width="5" stroke-linecap="round"/>
-          <line x1="85" y1="70" x2="50" y2="50" stroke="#0096c7" stroke-width="5" stroke-linecap="round"/>
-          <line x1="15" y1="70" x2="50" y2="50" stroke="#0096c7" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-      </div>
+    h2 {
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
 
-      <div class="info-box">
-        <p><strong>Potencia generada:</strong> <span id="potencia">0</span> Watts</p>
-        <p><small>Basado en rotor de 80 m² y eficiencia del 40%</small></p>
-      </div>
-    </section>
-  </main>
+    label {
+      font-size: 1.1em;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    .turbina {
+      width: 120px;
+      margin: 30px auto;
+      animation: girar 2s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes girar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .info-box {
+      background: #e0f7fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #0077b6;
+    }
+
+    .info-box small {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <section class="simulador">
+    <h2>💨 Simulador Interactivo de Turbina Eólica</h2>
+
+    <label for="viento">
+      <strong>Velocidad del viento:</strong> <span id="velocidadViento">10</span> m/s
+    </label>
+    <input type="range" id="viento" min="1" max="25" value="10" oninput="actualizarSimulador()" />
+
+    <div class="turbina" id="turbina">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <circle cx="50" cy="50" r="8" fill="#023e8a"/>
+        <line x1="50" y1="10" x2="50" y2="50" stroke="#00b4d8" stroke-width="5" stroke-linecap="round"/>
+        <line x1="85" y1="75" x2="50" y2="50" stroke="#00b4d8" stroke-width="5" stroke-linecap="round"/>
+        <line x1="15" y1="75" x2="50" y2="50" stroke="#00b4d8" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Potencia generada:</strong> <span id="potencia">0</span> W</p>
+      <small>Basado en un rotor de 80 m² y eficiencia del 40%</small>
+    </div>
+  </section>
 
   <script>
     function actualizarSimulador() {
-      const viento = document.getElementById('viento').value;
+      const viento = parseFloat(document.getElementById('viento').value);
       document.getElementById('velocidadViento').textContent = viento;
 
       const densidadAire = 1.225;
@@ -35,7 +104,8 @@ forma estable.</li>
       document.getElementById('potencia').textContent = potencia.toFixed(2);
 
       const turbina = document.getElementById('turbina');
-      turbina.style.animationDuration = (25 / viento) + "s";
+      const duracion = 25 / viento;
+      turbina.style.animation = `girar ${duracion}s linear infinite`;
     }
 
     actualizarSimulador();
