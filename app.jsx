@@ -1,3 +1,29 @@
+/*
+
+PRODE MUNDIAL 2026 - FULL APP
+
+ESTRUCTURA DEL PROYECTO:
+
+/app page.jsx /components GroupTable.jsx MatchCard.jsx Leaderboard.jsx /lib firebase.js /public /styles
+
+INSTALAR:
+
+npm install npm install lucide-react firebase
+
+EJECUTAR:
+
+npm run dev
+
+SUBIR A GITHUB:
+
+git init git add . git commit -m "prode mundial" git branch -M main git remote add origin TU_REPO git push -u origin main
+
+DEPLOY:
+
+https://vercel.com
+
+========================================= */
+
 import { useEffect, useMemo, useState } from 'react' import { Trophy, Users, Lock, Globe, LogOut, Save, Crown } from 'lucide-react'
 
 const partidosIniciales = [ { id: 1, grupo: 'Grupo A', fecha: '2026-06-11 18:00', local: 'Argentina', visitante: 'Brasil', resultado: null }, { id: 2, grupo: 'Grupo B', fecha: '2026-06-12 16:00', local: 'España', visitante: 'Francia', resultado: null }, { id: 3, grupo: 'Grupo C', fecha: '2026-06-13 20:00', local: 'Alemania', visitante: 'Portugal', resultado: null } ]
